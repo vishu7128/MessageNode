@@ -1,0 +1,22 @@
+#loading-spinner-container {
+  display: flex;
+  justify-content: center;
+}
+
+#loading-spinner {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%; /* Make it circular */
+  border: 8px solid; /* Add border and set it transparent */
+  border-top: 8px solid blue; /* Set the top border color */
+  animation: spin 1s infinite ease-in-out; /* Animation */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

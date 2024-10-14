@@ -1,0 +1,69 @@
+dialog {
+  /* height: 90%; */
+  width: 70%;
+  border: none; /* Remove default border */
+  border-radius: 8px; /* Rounded corners */
+  background-color: white; /* Light background color */
+  padding: 20px; /* Padding inside the dialog */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.dialog-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 15px; /* Adjusted gap for better spacing */
+  z-index: 100;
+}
+
+label,
+p {
+  font-weight: bold; /* Make labels bold */
+  color: #333; /* Darker text color for better contrast */
+  text-align: left;
+}
+
+input,
+textarea {
+  padding: 10px; /* Padding inside input fields */
+  border: 1px solid #ccc; /* Border around input fields */
+  border-radius: 4px; /* Rounded corners */
+  transition: border-color 0.1s; /* Transition for border color on focus */
+}
+
+input[type="file"] {
+  border: 2px solid lightgray;
+}
+
+textarea {
+  resize: none; /* Prevent resizing */
+}
+
+.dialog-btn-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.accept-btn {
+  background-color: darkorange; /* Background color for Accept button */
+  color: white; /* Text color */
+}
+
+.cancel-btn {
+  background-color: #ccc; /* Background color for Cancel button */
+  color: black; /* Text color */
+}
+
+.accept-btn:hover {
+  background-color: orange; /* Lighter shade on hover */
+}
+
+.cancel-btn:hover {
+  background-color: #aaa; /* Darker shade on hover */
+}
+
+.accept-btn:active,
+.cancel-btn:active {
+  transform: scale(0.95); /* Slight scale effect on click */
+}

@@ -1,0 +1,9 @@
+#status-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.status-input {
+  width: 50%;
+}

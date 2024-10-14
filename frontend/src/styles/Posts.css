@@ -1,0 +1,46 @@
+#posts-container {
+  display: flex;
+  justify-content: center;
+}
+
+#posts-container > ul {
+  width: 50%;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.post-container {
+  padding: 10px 20px;
+  border: 3px solid purple;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.post-author {
+  color: gray;
+}
+
+.post-title {
+  color: blue;
+  font-weight: 900;
+  font-size: larger;
+}
+
+.post-cmds {
+  justify-self: flex-end;
+  align-self: flex-end;
+}
+
+.post-btn {
+  margin-right: 10px;
+  color: purple;
+  background-color: white;
+}
+
+.post-btn:hover {
+  opacity: 0.9;
+}

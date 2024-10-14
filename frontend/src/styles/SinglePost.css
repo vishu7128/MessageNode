@@ -1,0 +1,9 @@
+#post-details-container {
+  color: black;
+  border: 1px solid purple;
+}
+
+.img {
+  width: 100px;
+  height: 100px;
+}
