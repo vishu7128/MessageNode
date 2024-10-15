@@ -2,11 +2,17 @@ const { validationResult } = require("express-validator");
 const Post = require("../models/posts");
 
 // Get all posts
-exports.getPosts = (req, res, next) => {
+exports.getPosts = async (req, res, next) => {
+  let currPage = req.query.page;
+  const POSTS_PER_PAGE = 2;
+  const totalPosts = await Post.find().countDocuments();
   Post.find({})
+    .skip((currPage - 1) * POSTS_PER_PAGE)
+    .limit(POSTS_PER_PAGE)
     .then((posts) => {
       res.status(200).json({
         posts: posts,
+        totalPosts,
       });
     })
     .catch((err) => {
@@ -72,7 +78,31 @@ exports.getPost = async (req, res, next) => {
   }
 };
 
-exports.updatePost = async (req, res, next) => {};
+exports.updatePost = async (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty() || !req.file) {
+    const error = new Error("The given inputs are not valid");
+    error.statusCode = 422; // Unprocessable Entity status code for validation errors
+    error.data = errors.array();
+    return next(error); // Pass error to error-handling middleware
+  }
+
+  try {
+    const postId = req.params.postId;
+    const title = req.body.title;
+    const content = req.body.content;
+    const imageURL = req.file.path;
+
+    const post = await Post.findById(postId);
+    post.title = title;
+    post.content = content;
+    post.imageURL = imageURL;
+
+    await post.save();
+  } catch (err) {
+    next(err);
+  }
+};
 exports.deletePost = async (req, res, next) => {
   try {
     const postId = req.params.postId;

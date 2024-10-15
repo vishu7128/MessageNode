@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
 const feedRoutes = require("./routes/feed");
+const authRoutes = require("./routes/auth");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
@@ -32,6 +33,7 @@ app.use((req, res, next) => {
 
 // Routes
 app.use("/feed", feedRoutes);
+app.use("/auth", authRoutes);
 
 // Error handling middleware
 app.use((error, req, res, next) => {

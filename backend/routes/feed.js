@@ -48,7 +48,15 @@ router.post(
 // GET /feed/posts/:postId
 router.get("/posts/:postId", feedController.getPost);
 // UPDATE /feed/posts/:postId
-router.put("/posts/:postId", feedController.updatePost);
+router.put(
+  "/posts/:postId",
+  upload.single("image"), // Apply multer only to this route
+  [
+    body("title").trim().isLength({ min: 5 }),
+    body("content").trim().isLength({ min: 5 }),
+  ],
+  feedController.updatePost
+);
 // DELETE /feed/posts/:postId
 router.delete("/posts/:postId", feedController.deletePost);
 
