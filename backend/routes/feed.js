@@ -2,6 +2,7 @@ const express = require("express");
 const feedController = require("../controllers/feed");
 const { body } = require("express-validator");
 const multer = require("multer");
+const isAuth = require("../Middlewares/isAuth");
 
 const router = express.Router();
 
@@ -32,7 +33,7 @@ const fileFilter = (req, file, cb) => {
 const upload = multer({ storage: storage, fileFilter: fileFilter });
 
 // GET /feed/posts
-router.get("/posts", feedController.getPosts);
+router.get("/posts", isAuth, feedController.getPosts);
 
 // POST /feed/post
 router.post(
